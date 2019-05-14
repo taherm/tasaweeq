@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Mail\contact;
 
 use App\Mail\careers;
+use Illuminate\Mail\Message;
 
 class ContactController extends Controller
 {
@@ -15,8 +16,7 @@ class ContactController extends Controller
             'name' => 'required|alpha',
             'email' => 'required|email|min:10|max:30',
             'subject' => 'required|min:5|max:50',
-            'message' => 'required|min:10|max:100',
-
+            'message' => ['required', 'min:10', 'max:100', 'not_regex:/((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)/i'],
         ]);
 
         if ($request->name == "MartinPem") {
@@ -45,7 +45,7 @@ class ContactController extends Controller
             'name' => 'required|alpha',
             'email' => 'required|email|min:10|max:30',
             'position' => 'required|min:5|max:50',
-            'message' => 'required|min:10|max:100',
+            'message' => ['required', 'min:10', 'max:100', 'not_regex:/((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)/i'],
             'cv' => 'file|mimetypes:application/pdf',
 
         ]);

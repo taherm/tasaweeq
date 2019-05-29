@@ -159,7 +159,7 @@ class ServicesTableSeeder extends Seeder
                 'menu_id' => 2,
                 'id' => 10,
                 'title_en' => 'Execution',
-                'title_ar' => 'إعدام',
+                'title_ar' => 'تنفيذ',
                 'description_en' => '<p>Execution</p>',
                 'description_ar' => '<p>إعدام</p>',
                 'image' => 'e7892a4105d6f7fdfbe452ce72b0bf9d.jpg',

